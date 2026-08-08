@@ -4,16 +4,24 @@ FastAPI is the single source of truth for accounts, teas, availability, reservat
 
 ## Run locally
 
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then run:
+
 ```bash
 cp .env.example .env
 docker compose up -d db
-python -m venv .venv
-source .venv/bin/activate
-pip install -e '.[dev]'
-uvicorn app.main:app --reload --port 8080
+uv sync --extra dev
+uv run uvicorn app.main:app --reload --port 8080
 ```
 
 Open `http://localhost:8080/docs`. The starter uses an in-memory service so it runs before PostgreSQL models are wired to repositories; `app/models/` and Alembic establish the production persistence boundary.
+
+## Development checks
+
+```bash
+uv run pytest
+uv run ruff check .
+uv run ruff format --check .
+```
 
 ## API
 
@@ -22,4 +30,3 @@ Open `http://localhost:8080/docs`. The starter uses an in-memory service so it r
 - `GET /api/v1/availability?date=YYYY-MM-DD`
 - CRUD under `/api/v1/reservations`
 - Slack linking under `/api/v1/integrations/slack/users`
-
