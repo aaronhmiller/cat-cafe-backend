@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+asyncpg://catcafe:catcafe@localhost:5432/catcafe"
     jwt_secret: str = "change-me"
     service_api_token: str = "development-service-token"
-    frontend_url: str = "http://localhost:8000"
+    frontend_url: str = "http://localhost:8443"
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
