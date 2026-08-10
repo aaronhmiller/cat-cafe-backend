@@ -10,10 +10,10 @@ Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then run:
 cp .env.example .env
 docker compose up -d db
 uv sync --extra dev
-uv run uvicorn app.main:app --reload --port 8080
+uv run uvicorn app.main:app --reload --port 8444
 ```
 
-Open `http://localhost:8080/docs`. The starter uses an in-memory service so it runs before PostgreSQL models are wired to repositories; `app/models/` and Alembic establish the production persistence boundary.
+Open `http://localhost:8444/docs`. The starter uses an in-memory service so it runs before PostgreSQL models are wired to repositories; `app/models/` and Alembic establish the production persistence boundary.
 
 ## Development checks
 
